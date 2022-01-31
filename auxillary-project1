@@ -1,0 +1,33 @@
+# AUX PROJECT 1: SHELL SCRIPTING
+
+In this project, you need to onboard 20 new Linux users onto a server. Create a shell script that reads a csv file that contains the first name of the users to be onboarded.
+
+Create the Shell Scritp that will create the user
+![Screenshot 2022-01-31 003242](https://user-images.githubusercontent.com/97651517/151744940-ff5653cd-b364-4ceb-8639-395873f44bc2.png)
+
+mkdir Shell
+
+touch names.csv (This file wil be used to generate the new users)
+Before Deploying your script, you will need to update your current user with the correct public key and private key.
+
+In your current home directory change directo .ssh folder
+cd .ssh
+ 
+touch id_rsa.pub
+open the file using your favorite editor and paste in the public key
+vi id_rsa.pub
+
+create a file for your private key
+touch id_rsa
+
+open the file using your favorite editor and paste in the private key.
+vi id_rsa
+Then open the public key file and paste into new file id_rsa.pub 
+do same to private key id-_rsa
+
+![Screenshot 2022-01-29 222624 onboard](https://user-images.githubusercontent.com/97651517/151745941-c0578b64-9cdc-4952-83b9-4f098a074d4e.png)
+![Screenshot 2022-01-29 222758 onboard2](https://user-images.githubusercontent.com/97651517/151745946-7bdc0669-fb10-423c-87d8-f98b2a304546.png)
+![Screenshot 2022-01-29 223307 users created](https://user-images.githubusercontent.com/97651517/151745963-d31a331c-c591-4b51-ac9e-2b092a1561ff.png)
+![Screenshot 2022-01-29 223450 new users](https://user-images.githubusercontent.com/97651517/151745980-1caeaa7b-3b62-4453-bc62-d8e76a7416c9.png)
+![Screenshot 2022-01-29 223844 filetring the groups](https://user-images.githubusercontent.com/97651517/151745993-94c552c7-40e1-4735-9606-f443cbd26f33.png)
+![Screenshot 2022-01-29 223953 new users as developers](https://user-images.githubusercontent.com/97651517/151745997-b0d3a4b4-f521-4b58-a0e0-8a9cfc406d19.png)
