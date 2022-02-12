@@ -36,8 +36,10 @@ By default, both of your EC2 virtual servers are located in the same local virtu
 Then change the IP CIDR block address from the Security Group to the IP address of your mysql client
 check IP address using
 "ip addr show"
-
 ![Screenshot 2022-02-11 004657 check ip addr of client server](https://user-images.githubusercontent.com/97651517/153700239-9451e67f-21d9-4521-b660-53ebc9ac84a0.png)
+
+![Screenshot 2022-02-12 024615](https://user-images.githubusercontent.com/97651517/153702317-70e17cd6-f75e-4d1b-8bc7-d0f11e5d217a.png)
+
 
 On the mysql-server you have to enable the service using this command:
 "sudo systemctl enable mysql"
@@ -46,11 +48,11 @@ Next: we have to create a user for the client-server and a database for the mysq
 But before that, we have to run the security script for mysql-server which will help us prepare the server.
 "sudo mysql_security_installation"
 
-![Screenshot 2022-02-11  mysql secure installation](https://user-images.githubusercontent.com/97651517/153700469-ad43421a-21e1-4547-be3b-98f52d33f2e1.png)
-
 Create a Password for the database, then answer yes for the rest until you are done.
 Next step;
 run this command "sudo mysql"
+
+![Screenshot 2022-02-11  mysql secure installation](https://user-images.githubusercontent.com/97651517/153700469-ad43421a-21e1-4547-be3b-98f52d33f2e1.png)
 
 ![Screenshot 2022-02-11 005434 sudo mysql command](https://user-images.githubusercontent.com/97651517/153700569-a06fd0af-7d29-46ef-9f0a-6cfc34f55404.png)
 
@@ -60,6 +62,48 @@ Grant all on test_db to remote_user
 Flush Privileges
 Finally exit 
 see image below:
+
+![Screenshot 2022-02-12 003041 using mysql command](https://user-images.githubusercontent.com/97651517/153701391-1a7195bb-5618-4e28-9975-748f0b8dec7f.png)
+
+You might need to configure MySQL server to allow connections from remote hosts. (run the following command)
+"sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf"
+
+![Screenshot 2022-02-12 003302 config command mysql-server](https://user-images.githubusercontent.com/97651517/153701542-39c38bf0-2c30-4f6d-acc0-4208a1f83d11.png)
+
+Locate the bind-address and delete it using dw then,
+Replace ‘127.0.0.1’ to ‘0.0.0.0’ like this: 
+this setting will enable connection/User from any netwrok from any IP address
+image:
+
+![Screenshot 2022-02-12 003658 replace with  0 0 0 0](https://user-images.githubusercontent.com/97651517/153701597-26143e48-8dcf-4dff-a0bc-8920816f819b.png)
+ Next restart mysql-server service with
+ "sudo systemctl restart mysql"
+ 
+ From mysql client Linux Server connect remotely to mysql server Database Engine without using SSH. You must use the mysql utility to perform this action. run this command
+"sudo mysql -u remote_user -h <IP address of mysql-server> -p"
+then enter password
+image:
+   
+ ![Screenshot 2022-02-12 004227 connecting from client server to mysql server without ssh](https://user-images.githubusercontent.com/97651517/153701912-93105777-4419-4d17-8624-ae82ade6c755.png)
+
+Check that you have successfully connected to a remote MySQL server and can perform SQL queries:
+  use this command: 
+  Show databases;
+  
+  ![Screenshot 2022-02-12 004420 showing database from my client server](https://user-images.githubusercontent.com/97651517/153702061-b972a2ad-c175-44fe-b8cd-cb4382a82726.png)
+ntent.com/97651517/153701912-93105777-4419-4d17-8624-ae82ade6c755.png)
+
+Running some Basic SQL commands like SELECT
+ 
+  ![Screenshot 2022-02-12 004822 using the select command on mysql](https://user-images.githubusercontent.com/97651517/153702142-e7d36180-b8df-4a82-8fdd-235485b816a2.png)
+
+ 
+  You can try other commands like SHOW, CREATE, DROP, INSERT SQL Queries yourself
+
+  Thank you.
+  
+
+
 
 
 
